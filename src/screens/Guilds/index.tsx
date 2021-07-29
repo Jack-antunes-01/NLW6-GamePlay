@@ -1,9 +1,8 @@
-import React, { ReactNode } from "react";
-import { Text, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Guild, GuildProps } from "../../components/Guild";
 import { ListDivider } from "../../components/ListDivider";
-import { Avatar } from "../Avatar";
 import { styles } from "./styles";
 
 type Props = {
@@ -59,9 +58,9 @@ export function Guilds({ handleGuildSelected }: Props) {
           <Guild data={item} onPress={() => handleGuildSelected(item)} />
         )}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 68, paddingTop: 103 }}
-        ItemSeparatorComponent={() => <ListDivider />}
-        ListHeaderComponent={() => <ListDivider />}
+        contentContainerStyle={{ paddingBottom: 68, paddingTop: 68 }}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
+        ListHeaderComponent={() => <ListDivider isCentered />}
         style={styles.guilds}
       />
     </View>
