@@ -1,38 +1,52 @@
-import React, { useState } from "react";
-import { Image, Text, View, StatusBar } from "react-native";
-import { styles } from "./style";
+import React from "react";
+import { Alert, Image, Text, View } from "react-native";
+
+import { useAuth } from "../../hooks/auth";
+
+import { styles } from "./styles";
 import IllustrationImg from "../../assets/illustration.png";
+
 import { ButtonIcon } from "../../components/ButtonIcon";
+import { Background } from "../../components/Background";
 
 export function SignIn() {
+  async function handleSignIn() {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert(error);
+    }
+  }
+
+  const { user, signIn, loading } = useAuth();
+
   return (
-    <View style={styles.container}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
+    <Background>
+      <View style={styles.container}>
+        <Image
+          source={IllustrationImg}
+          style={styles.image}
+          resizeMode="stretch"
+        />
 
-      <Image
-        source={IllustrationImg}
-        style={styles.image}
-        resizeMode="stretch"
-      />
+        <View style={styles.content}>
+          <Text style={styles.title}>
+            Conecte-se {"\n"}e organize suas {"\n"}
+            jogatinas
+          </Text>
 
-      <View style={styles.content}>
-        <Text style={styles.title}>
-          Organize {`\n`}
-          suas jogatinas {`\n`}
-          facilmente
-        </Text>
+          <Text style={styles.subtitle}>
+            Crie grupos para jogar seus games {"\n"}
+            favoritos com seus amigos
+          </Text>
 
-        <Text style={styles.subtitle}>
-          Crie grupos para jogar seus games {`\n`}
-          favoritos com seus amigos
-        </Text>
-
-        <ButtonIcon title="Entrar com Discord" activeOpacity={0.7} />
+          <ButtonIcon
+            title="Entrar com Discord"
+            loading={loading}
+            onPress={handleSignIn}
+          />
+        </View>
       </View>
-    </View>
+    </Background>
   );
 }
