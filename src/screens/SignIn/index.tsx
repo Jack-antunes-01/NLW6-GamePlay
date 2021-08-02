@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/auth";
 
 import { styles } from "./styles";
 import IllustrationImg from "../../assets/illustration.png";
+import RivenImg from "../../assets/riven.png";
 
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
@@ -18,16 +19,12 @@ export function SignIn() {
     }
   }
 
-  const { user, signIn, loading } = useAuth();
+  const { signIn, loading } = useAuth();
 
   return (
     <Background>
       <View style={styles.container}>
-        <Image
-          source={IllustrationImg}
-          style={styles.image}
-          resizeMode="stretch"
-        />
+        <Image source={RivenImg} style={styles.image} resizeMode="cover" />
 
         <View style={styles.content}>
           <Text style={styles.title}>

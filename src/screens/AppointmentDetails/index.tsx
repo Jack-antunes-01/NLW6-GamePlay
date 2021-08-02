@@ -126,6 +126,7 @@ export function AppointmentDetails() {
           renderItem={({ item }) => <Member data={item} />}
           ItemSeparatorComponent={() => <ListDivider isCentered />}
           style={styles.members}
+          contentContainerStyle={{ paddingBottom: 80 }}
         />
       )}
       {guildSelected.guild.owner && (
